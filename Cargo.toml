@@ -15,7 +15,6 @@ categories = ["development-tools::procedural-macro-helpers"]
 [dependencies]
 syn = "1.0.18"
 quote = "1.0.3"
-proc-macro2 = "1.0.10"
 proc-macro-hack = "0.5.15"
 
 [lib]

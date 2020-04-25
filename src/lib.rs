@@ -1,3 +1,4 @@
+//! 
 use quote::quote;
 use proc_macro_hack::proc_macro_hack;
 use syn::{Token, Type};
@@ -26,15 +27,18 @@ impl Parse for CommaPunctuatedTyTokenStream {
 // "error: procedural macros cannot be expanded to expressions" is resloved.
 // note: see issue #54727 <https://github.com/rust-lang/rust/issues/54727> for more information
 #[proc_macro_hack]
-/// Returns the count of [`:ty`]s in the given [`TokenStream`]
+/// Returns the count of comma-delimited [`:ty`]s (types) in the given [`TokenStream`]
 /// as a constant expression of type usize
 ///
 /// # Arguments
-/// 
-/// * `input` - A [`TokenStream`] in which [`:ty`]s must be counted
 ///
-/// # Example
+/// * `input` - A [`TokenStream`] in which comma-delimited [`:ty`]s (types) must be counted
 ///
+/// # Examples
+///
+/// Basic usage:
+/// ```
+/// count_tys!($($ty:ty),*)
 /// ```
 /// extern crate proc_macro_hack;
 /// use proc_macro_hack::proc_macro_hack;
@@ -58,7 +62,7 @@ impl Parse for CommaPunctuatedTyTokenStream {
 ///                 // note: see issue #54727
 ///                 // <https://github.com/rust-lang/rust/issues/54727>
 ///                 // for more information.
-///                 count_tys!($($ty:ty)*)
+///                 count_tys!($($ty:ty),*)
 ///             }
 ///         }
 ///     };
@@ -79,7 +83,8 @@ impl Parse for CommaPunctuatedTyTokenStream {
 /// declare_variadic_struct!(VariadicStruct, <usize, usize, usize>);
 /// assert_eq!(VariadicStruct::count(), 3);
 /// ```
-/// 
+///
+/// [`usize`]: https://doc.rust-lang.org/std/primitive.usize.html
 /// [`TokenStream`]: https://doc.rust-lang.org/proc_macro/struct.TokenStream.html
 /// [`TokenTree`]: https://doc.rust-lang.org/proc_macro/enum.TokenTree.html
 /// [`:ty`]: https://doc.rust-lang.org/rust-by-example/macros/designators.html
@@ -95,7 +100,6 @@ pub fn count_tys(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 // ```
 // 
 // the following implementation does not produce heavy [`TokenStream`] of "1usize + 1usize...".
-// and does not treat composite [`designators`](such as :expr) as one ( [`TokenTree`] )
 // 
 // [`TokenStream`]: https://doc.rust-lang.org/proc_macro/struct.TokenStream.html
 // [`TokenTree`]: https://doc.rust-lang.org/proc_macro/enum.TokenTree.html
