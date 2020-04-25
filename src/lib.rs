@@ -44,17 +44,15 @@ impl Parse for CommaPunctuatedTyTokenStream {
 /// 
 /// ## More complete example:
 ///
-/// ### Cargo.toml
+/// ### Cargo.toml dependencies
 ///
-/// 1.  [package]
-/// 2.  name = "example"
-/// 3.  version = "0.1.0"
-/// 4.  authors = ["Dmitrii - Demenev <demenev.dmitriy1@mail.ru>"]
-/// 5.  edition = "2018"
-/// 6.
-/// 7.  [dependencies]
-/// 8. proc-macro-hack = "0.5"
-/// 9. count-tys = "0.1"
+/// ```rust
+/// /*
+/// [dependencies]
+/// proc-macro-hack = "0.5"
+/// count-tys = "0.1"
+/// */
+/// ```
 ///
 /// ### main.rs 
 ///
