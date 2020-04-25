@@ -1,6 +1,6 @@
 use quote::quote;
 use proc_macro_hack::proc_macro_hack;
-use syn::{parse_macro_input, Token, Type};
+use syn::{Token, Type};
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
 
@@ -103,13 +103,6 @@ pub fn count_tys(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 // [`pattern`]: https://doc.rust-lang.org/rust-by-example/macros/designators.html
 // 
     let comma_punctuated_ty_token_stream = syn::parse_macro_input!(input as CommaPunctuatedTyTokenStream);
-    /*
-    let tys_counting_fsm_for_ty_tt_cluster_seq = TysCountingFSMForTyTtClusterSeq::<usize>::new();
-    let tys_count :usize = unsafe {
-        tys_counting_fsm_for_ty_tt_cluster_seq
-            .unsafe_into_iter_transition(proc_macro2::TokenStream::from(input))
-        }.get_count();
-    */
     let tys_count :usize = comma_punctuated_ty_token_stream.into();
     let expanded_tt  = quote!{#tys_count};
     proc_macro::TokenStream::from(expanded_tt)
