@@ -3,15 +3,20 @@ name = "count-tys"
 version = "0.1.0"
 authors = ["Dmitrii - Demenev <demenev.dmitriy1@mail.ru>"]
 edition = "2018"
+description = "Function-like procedural macro that accepts a comma-delimited :ty TokenTree sequence and returns their count as a constant usize"
+documentation = "https://docs.rs/count-tys"
+repository = "https://github.com/JohnScience/count_tys"
+license = "MIT"
+keywords = ["macro", "macros", "static"]
+categories = ["development-tools::procedural-macro-helpers"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-syn = "1.0.17"
+syn = "1.0.18"
 quote = "1.0.3"
 proc-macro2 = "1.0.10"
 proc-macro-hack = "0.5.15"
-tys-counting-fsm-for-ty-tt-cluster-seq = {path="./dependencies/tys-counting-fsm-for-ty-tt-cluster-seq"}
 
 [lib]
 proc-macro = true
