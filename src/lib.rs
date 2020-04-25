@@ -1,4 +1,5 @@
-//! 
+#![feature(external_doc)]
+#![doc(include = "../doc/README.md")]
 use quote::quote;
 use proc_macro_hack::proc_macro_hack;
 use syn::{Token, Type};
@@ -36,10 +37,28 @@ impl Parse for CommaPunctuatedTyTokenStream {
 ///
 /// # Examples
 ///
-/// Basic usage:
+/// ## Basic usage:
+/// ```rust
+/// // count_tys!($($ty:ty),*)
 /// ```
-/// count_tys!($($ty:ty),*)
-/// ```
+/// 
+/// ## More complete example:
+///
+/// ### Cargo.toml
+///
+/// 1.  [package]
+/// 2.  name = "example"
+/// 3.  version = "0.1.0"
+/// 4.  authors = ["Dmitrii - Demenev <demenev.dmitriy1@mail.ru>"]
+/// 5.  edition = "2018"
+/// 6.
+/// 7.  [dependencies]
+/// 8. proc-macro-hack = "0.5"
+/// 9. count-tys = "0.1"
+///
+/// ### main.rs 
+///
+/// ```rust
 /// extern crate proc_macro_hack;
 /// use proc_macro_hack::proc_macro_hack;
 /// #[proc_macro_hack]
