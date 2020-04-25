@@ -1,6 +1,6 @@
 [package]
 name = "count-tys"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Dmitrii - Demenev <demenev.dmitriy1@mail.ru>"]
 edition = "2018"
 description = "Function-like procedural macro that accepts a comma-delimited :ty TokenTree sequence and returns their count as a constant usize"
